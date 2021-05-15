@@ -1,0 +1,8 @@
+{
+    "workbench.colorCustomizations": {
+        "[Eva Light Bold]": {
+            "terminal.ansiYellow": "#b8ac04",
+            "terminal.ansiBrightBlack": "#f890c0"
+        }
+    }
+}
