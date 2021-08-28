@@ -1,1 +1,17 @@
+# ide
 .history
+
+# yarn
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# js-ts
+node_modules/
+
+# dist
+dist/js/

@@ -1,0 +1,24 @@
+{
+  "name": "steelseries-cinema",
+  "version": "0.1.0",
+  "description": "Allows to subscribe to browser fullscreen event to control steelseries gears lighting",
+  "main": "index.js",
+  "repository": "git@github.com:meskill/steelseries-fullscreenhandler.git",
+  "author": "meskill <8974488+meskill@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.154",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5"
+  }
+}
