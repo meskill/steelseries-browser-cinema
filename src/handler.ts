@@ -1,25 +1,12 @@
-(function () {
-	let address: string;
-	let interval: number;
+import { SteelSeriesApi } from './api';
+import { createFullScreenEvent } from './events';
 
-	const sendPost = (method: string, body: any) => {
-		return fetch(`http://${address}/${method}`, {
-			method: 'POST',
-			body: JSON.stringify(body),
-			headers: {
-				'Content-Type': 'application/json; charset=utf-8',
-			},
-		});
-	};
+(function () {
+	let interval: number;
+	let api: SteelSeriesApi;
 
 	const sendFullscreen = () => {
-		return sendPost('game_event', {
-			game: 'CHROMIUM',
-			event: 'FULLSCREEN',
-			data: {
-				value: 1,
-			},
-		});
+		return api.send('game_event', createFullScreenEvent());
 	};
 
 	const handler = async () => {
@@ -35,9 +22,9 @@
 	};
 
 	document.addEventListener('fullscreenchange', () => {
-		if (!address) {
-			chrome.runtime.sendMessage({ event: 'getAddress' }, (response) => {
-				address = response;
+		if (!api) {
+			chrome.runtime.sendMessage({ event: 'getAddress' }, (address) => {
+				api = new SteelSeriesApi(address);
 
 				handler();
 			});
