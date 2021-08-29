@@ -1,0 +1,26 @@
+{
+	"name": "SteelSeries fullscreen",
+	"version": "0.1.0",
+	"description": "Allows to subscribe to browser fullscreen event to control steelseries gears lighting",
+	"manifest_version": 2,
+	"permissions": [
+		"activeTab",
+		"file://*/*"
+	],
+	"background": {
+		"scripts": [
+			"background.js"
+		],
+		"persistent": false
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"https://*/*"
+			],
+			"js": [
+				"handler.js"
+			]
+		}
+	]
+}

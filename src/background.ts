@@ -23,7 +23,7 @@ const readAddress = async (): Promise<string> => {
 				chrome.tabs.executeScript(
 					tabId,
 					{
-						file: 'js/readAddress.js',
+						file: './readAddress.js',
 						runAt: 'document_end',
 					},
 					(result) => {
@@ -51,27 +51,22 @@ const readAddress = async (): Promise<string> => {
 };
 
 chrome.runtime.onInstalled.addListener(async () => {
-	try {
-		address = await readAddress();
+	address = await readAddress();
 
-		await sendPost('game_metadata', {
-			game: 'CHROMIUM',
-			game_display_name: 'Chromium',
-			developer: 'meskill',
-			deinitialize_timer_length_ms: 30000,
-		});
+	await sendPost('game_metadata', {
+		game: 'CHROMIUM',
+		game_display_name: 'Chromium',
+		developer: 'meskill',
+		deinitialize_timer_length_ms: 30000,
+	});
 
-		await sendPost('register_game_event', {
-			game: 'CHROMIUM',
-			event: 'FULLSCREEN',
-			icon_id: 16,
-		});
+	await sendPost('register_game_event', {
+		game: 'CHROMIUM',
+		event: 'FULLSCREEN',
+		icon_id: 16,
+	});
 
-		console.log('done', address);
-	} catch (e) {
-		console.log(e);
-		console.log(chrome.runtime.lastError);
-	}
+	console.log('done', address);
 });
 
 chrome.runtime.lastError;

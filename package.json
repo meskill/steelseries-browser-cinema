@@ -1,24 +1,32 @@
 {
-  "name": "steelseries-cinema",
-  "version": "0.1.0",
-  "description": "Allows to subscribe to browser fullscreen event to control steelseries gears lighting",
-  "main": "index.js",
-  "repository": "git@github.com:meskill/steelseries-fullscreenhandler.git",
-  "author": "meskill <8974488+meskill@users.noreply.github.com>",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch"
-  },
-  "devDependencies": {
-    "@types/chrome": "^0.0.154",
-    "@typescript-eslint/eslint-plugin": "^4.29.3",
-    "@typescript-eslint/parser": "^4.29.3",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.1",
-    "prettier": "^2.3.2",
-    "typescript": "^4.3.5"
-  }
+	"name": "steelseries-cinema",
+	"version": "0.1.0",
+	"description": "Allows to subscribe to browser fullscreen event to control steelseries gears lighting",
+	"main": "index.js",
+	"repository": "git@github.com:meskill/steelseries-fullscreenhandler.git",
+	"author": "meskill <8974488+meskill@users.noreply.github.com>",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"build": "webpack build --config ./tools/webpack/config/prod.js",
+		"watch": "webpack watch --config ./tools/webpack/config/dev.js",
+		"lint": "eslint ./src/**/*.ts && eslint ./tools/**/*.js"
+	},
+	"devDependencies": {
+		"@types/chrome": "^0.0.154",
+		"@typescript-eslint/eslint-plugin": "^4.29.3",
+		"@typescript-eslint/parser": "^4.29.3",
+		"clean-webpack-plugin": "^4.0.0-alpha.0",
+		"copy-webpack-plugin": "^9.0.1",
+		"eslint": "^7.32.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^3.4.1",
+		"prettier": "^2.3.2",
+		"ts-loader": "^9.2.5",
+		"typescript": "^4.3.5",
+		"webpack": "^5.51.1",
+		"webpack-cli": "^4.8.0",
+		"webpack-dev-server": "^4.0.0",
+		"webpack-merge": "^5.8.0"
+	}
 }

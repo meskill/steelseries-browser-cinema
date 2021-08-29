@@ -34,7 +34,7 @@
 		}
 	};
 
-	document.addEventListener('fullscreenchange', (event) => {
+	document.addEventListener('fullscreenchange', () => {
 		if (!address) {
 			chrome.runtime.sendMessage({ event: 'getAddress' }, (response) => {
 				address = response;
