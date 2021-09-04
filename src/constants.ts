@@ -1,2 +1,0 @@
-export const GAME_NAME = 'CHROMIUM';
-export const EVENT_FULLSCREEN_NAME = 'FULLSCREEN';

@@ -2,25 +2,34 @@
 	"name": "SteelSeries fullscreen",
 	"version": "0.1.0",
 	"description": "Allows to subscribe to browser fullscreen event to control steelseries gears lighting",
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"permissions": [
-		"activeTab",
+		"storage"
+	],
+	"host_permissions": [
 		"file://*/*"
 	],
-	"background": {
-		"scripts": [
-			"background.js"
-		],
-		"persistent": false
-	},
 	"content_scripts": [
 		{
 			"matches": [
-				"https://*/*"
+				"<all_urls>"
 			],
 			"js": [
 				"handler.js"
 			]
 		}
-	]
+	],
+	"web_accessible_resources": [
+		{
+			"resources": [
+				"iframe.html"
+			],
+			"matches": [
+				"https://*/*"
+			]
+		}
+	],
+	"icons": {
+		"128": "assets/cinema-screen.png"
+	}
 }

@@ -1,35 +1,70 @@
 import { SteelSeriesApi } from './api';
+import { FULLSCREEN_BACKGROUND_FETCH_INTERNAL } from './constants/timeouts';
 import { createFullScreenEvent } from './events';
+import { getAddressWithStorage, writeAddressIntoStorage } from './storage';
 
-(function () {
-	let interval: number;
-	let api: SteelSeriesApi;
+const getAddressWithIframe = () => {
+	console.log('loading from iframe');
+	return new Promise<string>((resolve) => {
+		const iframe = document.createElement('iframe');
 
-	const sendFullscreen = () => {
-		return api.send('game_event', createFullScreenEvent());
-	};
+		iframe.style.display = 'none';
+		iframe.src = chrome.runtime.getURL('iframe.html');
 
-	const handler = async () => {
-		if (document.fullscreenElement) {
-			sendFullscreen();
+		const listener = ({ data, origin }: MessageEvent<string>) => {
+			if (iframe.src.startsWith(origin)) {
+				window.removeEventListener('message', listener);
 
-			interval = setInterval(() => {
-				sendFullscreen();
-			}, 28000);
-		} else {
-			clearInterval(interval);
-		}
-	};
+				console.log('got from iframe', data);
 
-	document.addEventListener('fullscreenchange', () => {
-		if (!api) {
-			chrome.runtime.sendMessage({ event: 'getAddress' }, (address) => {
-				api = new SteelSeriesApi(address);
+				writeAddressIntoStorage(data);
+				resolve(data);
+			}
+		};
 
-				handler();
-			});
-		} else {
-			handler();
-		}
+		window.addEventListener('message', listener);
+
+		document.body.appendChild(iframe);
 	});
-})();
+};
+
+const resolveAddress = async () => {
+	console.log('loading from storage');
+	const fromStorage = await getAddressWithStorage();
+
+	console.log('got from storage', fromStorage);
+
+	if (fromStorage) {
+		return fromStorage;
+	}
+
+	return getAddressWithIframe();
+};
+
+let interval: ReturnType<typeof setTimeout>;
+let api: SteelSeriesApi;
+
+const sendFullscreen = async () => {
+	if (!api) {
+		api = new SteelSeriesApi(await resolveAddress());
+	}
+
+	try {
+		return api.send('game_event', createFullScreenEvent());
+	} catch (err) {
+		await getAddressWithIframe();
+		sendFullscreen();
+	}
+};
+
+document.addEventListener('fullscreenchange', async () => {
+	if (document.fullscreenElement) {
+		sendFullscreen();
+
+		interval = setInterval(() => {
+			sendFullscreen();
+		}, FULLSCREEN_BACKGROUND_FETCH_INTERNAL);
+	} else {
+		clearInterval(interval);
+	}
+});

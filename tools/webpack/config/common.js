@@ -6,7 +6,7 @@ const CopyPlugin = require('copy-webpack-plugin');
  */
 const config = {
 	entry: {
-		background: './src/background.ts',
+		iframe: './src/iframe.ts',
 		handler: './src/handler.ts',
 	},
 	output: {
@@ -15,7 +15,11 @@ const config = {
 	},
 	plugins: [
 		new CopyPlugin({
-			patterns: [{ from: 'src/manifest.json' }, { from: 'src/readAddress.js' }],
+			patterns: [
+				{ from: 'src/manifest.json' },
+				{ from: 'src/iframe.html' },
+				{ from: 'assets', to: 'assets' },
+			],
 		}),
 	],
 	module: {

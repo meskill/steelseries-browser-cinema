@@ -1,5 +1,5 @@
 import { GameSenseEvent } from './types';
-import { GAME_NAME, EVENT_FULLSCREEN_NAME } from './constants';
+import { GAME_NAME, EVENT_FULLSCREEN_NAME } from './constants/steelseries';
 
 type Events = typeof EVENT_FULLSCREEN_NAME;
 export type FullScreenEvent = GameSenseEvent<typeof GAME_NAME, Events>;
