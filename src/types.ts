@@ -17,6 +17,9 @@ export interface GameSenseRegisterEvents<
 	icon_id?: number;
 }
 
+export type GameSenseStopEvent<Game extends string = string> =
+	GameSenseBase<Game>;
+
 export interface GameSenseEvent<
 	Game extends string = string,
 	Event extends string = string,

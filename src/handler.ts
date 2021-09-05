@@ -1,10 +1,10 @@
 import { SteelSeriesApi } from './api';
+import { GAME_NAME } from './constants/steelseries';
 import { FULLSCREEN_BACKGROUND_FETCH_INTERNAL } from './constants/timeouts';
 import { createFullScreenEvent } from './events';
 import { getAddressWithStorage, writeAddressIntoStorage } from './storage';
 
 const getAddressWithIframe = () => {
-	console.log('loading from iframe');
 	return new Promise<string>((resolve) => {
 		const iframe = document.createElement('iframe');
 
@@ -14,8 +14,6 @@ const getAddressWithIframe = () => {
 		const listener = ({ data, origin }: MessageEvent<string>) => {
 			if (iframe.src.startsWith(origin)) {
 				window.removeEventListener('message', listener);
-
-				console.log('got from iframe', data);
 
 				writeAddressIntoStorage(data);
 				resolve(data);
@@ -29,10 +27,7 @@ const getAddressWithIframe = () => {
 };
 
 const resolveAddress = async () => {
-	console.log('loading from storage');
 	const fromStorage = await getAddressWithStorage();
-
-	console.log('got from storage', fromStorage);
 
 	if (fromStorage) {
 		return fromStorage;
@@ -44,17 +39,30 @@ const resolveAddress = async () => {
 let interval: ReturnType<typeof setTimeout>;
 let api: SteelSeriesApi;
 
-const sendFullscreen = async () => {
+const reloadApi = async () => {
+	api = new SteelSeriesApi(await resolveAddress());
+};
+
+const resolveApi = async () => {
 	if (!api) {
-		api = new SteelSeriesApi(await resolveAddress());
+		await reloadApi();
 	}
+};
+
+const sendEvent = async (apiRequest: () => Promise<void>) => {
+	await resolveApi();
 
 	try {
-		return api.send('game_event', createFullScreenEvent());
+		await apiRequest();
 	} catch (err) {
+		await reloadApi();
 		await getAddressWithIframe();
-		sendFullscreen();
+		sendEvent(apiRequest);
 	}
+};
+
+const sendFullscreen = () => {
+	return sendEvent(() => api.send('game_event', createFullScreenEvent()));
 };
 
 document.addEventListener('fullscreenchange', async () => {
@@ -66,5 +74,6 @@ document.addEventListener('fullscreenchange', async () => {
 		}, FULLSCREEN_BACKGROUND_FETCH_INTERNAL);
 	} else {
 		clearInterval(interval);
+		sendEvent(() => api.send('stop_game', { game: GAME_NAME }));
 	}
 });

@@ -4,11 +4,16 @@
 	"description": "Allows to subscribe to browser fullscreen event to control steelseries gears lighting",
 	"manifest_version": 3,
 	"permissions": [
-		"storage"
+		"storage",
+		"tabs",
+		"scripting"
 	],
 	"host_permissions": [
 		"file://*/*"
 	],
+	"background": {
+		"service_worker": "service_worker.js"
+	},
 	"content_scripts": [
 		{
 			"matches": [
