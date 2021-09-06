@@ -1,9 +1,4 @@
-import {
-	GameSenseDescription,
-	GameSenseEvent,
-	GameSenseRegisterEvents,
-	GameSenseStopEvent,
-} from './types';
+import { GameSenseDescription, GameSenseEvent, GameSenseRegisterEvents, GameSenseStopEvent } from './types';
 
 interface Events {
 	game_metadata: GameSenseDescription;
@@ -15,10 +10,7 @@ interface Events {
 export class SteelSeriesApi {
 	constructor(public apiUrl: string) {}
 
-	async send<Method extends keyof Events>(
-		method: Method,
-		body: Events[Method]
-	): Promise<void> {
+	async send<Method extends keyof Events>(method: Method, body: Events[Method]): Promise<void> {
 		await fetch(`http://${this.apiUrl}/${method}`, {
 			method: 'POST',
 			body: JSON.stringify(body),

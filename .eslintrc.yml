@@ -27,3 +27,7 @@ rules:
   semi:
     - error
     - always
+overrides:
+  - files:
+      - "*.md"
+    parser: "markdown-eslint-parser"
