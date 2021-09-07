@@ -11,6 +11,7 @@ const config = {
 		handler: './src/handler.ts',
 	},
 	output: {
+		clean: true,
 		path: path.resolve(__dirname, '..', '..', '..', 'dist'),
 		filename: '[name].js',
 	},
