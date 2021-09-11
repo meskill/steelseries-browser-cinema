@@ -35,7 +35,7 @@ jobs:
       - name: Dry-Run Release
         id: release
         uses: ridedott/release-me-action@v3
-        with: &release-settings
+        with:
           dry-run: true
           node-module: true
           release-rules: |
@@ -62,6 +62,15 @@ jobs:
       - name: Release
         uses: ridedott/release-me-action@v3
         with:
-          <<: *release-settings
           dry-run: false
           release-assets: release.zip
+          node-module: true
+          release-rules: |
+            [
+              { "release": "patch", "type": "build" },
+              { "release": "patch", "type": "ci" },
+              { "release": "patch", "type": "chore" },
+              { "release": "patch", "type": "improvement" },
+              { "release": "patch", "type": "refactor" },
+              { "release": false, "subject": "*\\[skip release\\]*" }
+            ]
