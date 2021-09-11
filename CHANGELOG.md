@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/meskill/steelseries-fullscreenhandler/compare/v1.0.2...v1.0.3) (2021-09-11)
+
+### Continuous Integration
+
+- remove anchors from yml ([7cecfdb](https://github.com/meskill/steelseries-fullscreenhandler/commit/7cecfdb2dc0ad5423af0e0d5ce12cdb1d722e4c0))
+- update manifest.json version ([fb604ed](https://github.com/meskill/steelseries-fullscreenhandler/commit/fb604ed143a3823a163552872838ed84f3668abf))
+
 ## [1.0.2](https://github.com/meskill/steelseries-fullscreenhandler/compare/v1.0.1...v1.0.2) (2021-09-11)
 
 ### Continuous Integration
