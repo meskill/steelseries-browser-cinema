@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: release
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "src/**"
+      - "tools/webpack/**"
+      - "yarn.lock"
+      - "tsconfig.json"
+
+jobs:
+  publish:
+    runs-on: ubuntu-20.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: yarn
+      - run: yarn
+      - run: yarn build
+      - name: 📦 Zip dist files
+        id: zip
+        uses: Roslovets-Inc/zip-npm-files@v1
+        with:
+          files: dist
+      - uses: ridedott/release-me-action@v3
+        with:
+          node-module: true
+          disable-changelog: true
+          release-assets: ${{ steps.zip.outputs.archive }}
+          release-rules: |
+            [
+              { "release": "patch", "type": "build" },
+              { "release": "patch", "type": "chore" },
+              { "release": "patch", "type": "improvement" },
+              { "release": "patch", "type": "refactor" },
+              { "release": false, "subject": "*\\[skip release\\]*" }
+            ]
