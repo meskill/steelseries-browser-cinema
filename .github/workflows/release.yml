@@ -21,22 +21,23 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
           node-version: 16
           cache: yarn
-      - run: yarn
-      - run: yarn build
-      - uses: papeloto/action-zip@v1
-        with:
-          files: dist/
-          recursive: true
-          dest: release.zip
-      - uses: ridedott/release-me-action@v3
-        with:
+      - name: Install
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Dry-Run Release
+        id: release
+        uses: ridedott/release-me-action@v3
+        with: &release-settings
+          dry-run: true
           node-module: true
-          release-assets: release.zip
           release-rules: |
             [
               { "release": "patch", "type": "build" },
@@ -46,3 +47,21 @@ jobs:
               { "release": "patch", "type": "refactor" },
               { "release": false, "subject": "*\\[skip release\\]*" }
             ]
+      - name: Update manifest.json version
+        uses: jossef/action-set-json-field@v1
+        with:
+          file: dist/manifest.json
+          field: version
+          value: ${{ steps.release.outputs.version }}
+      - name: Generate release.zip
+        uses: papeloto/action-zip@v1
+        with:
+          files: dist/
+          recursive: true
+          dest: release.zip
+      - name: Release
+        uses: ridedott/release-me-action@v3
+        with:
+          <<: *release-settings
+          dry-run: false
+          release-assets: release.zip
