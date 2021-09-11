@@ -13,6 +13,7 @@ on:
       - "tools/webpack/**"
       - "yarn.lock"
       - "tsconfig.json"
+      - ".github/workflows/release.yml"
 
 jobs:
   publish:
@@ -27,19 +28,19 @@ jobs:
           cache: yarn
       - run: yarn
       - run: yarn build
-      - name: 📦 Zip dist files
-        id: zip
-        uses: Roslovets-Inc/zip-npm-files@v1
+      - uses: papeloto/action-zip@v1
         with:
-          files: dist
+          files: dist/
+          recursive: false
+          dest: release.zip
       - uses: ridedott/release-me-action@v3
         with:
           node-module: true
-          disable-changelog: true
-          release-assets: ${{ steps.zip.outputs.archive }}
+          release-assets: release.zip
           release-rules: |
             [
               { "release": "patch", "type": "build" },
+              { "release": "patch", "type": "ci" },
               { "release": "patch", "type": "chore" },
               { "release": "patch", "type": "improvement" },
               { "release": "patch", "type": "refactor" },
