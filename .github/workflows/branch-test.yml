@@ -13,8 +13,10 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: ridedott/release-me-action@v3
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Dry-Run Release
+        uses: ridedott/release-me-action@v3
         with:
           dry-run: true
           node-module: true
