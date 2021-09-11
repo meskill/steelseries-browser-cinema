@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/meskill/steelseries-fullscreenhandler/compare/v1.0.1...v1.0.2) (2021-09-11)
+
+### Continuous Integration
+
+- fix release zip format ([1de2c9a](https://github.com/meskill/steelseries-fullscreenhandler/commit/1de2c9a6b28a9822ee8d45a728377a7d2c05407d))
+
 ## [1.0.1](https://github.com/meskill/steelseries-fullscreenhandler/compare/v1.0.0...v1.0.1) (2021-09-11)
 
 ### Continuous Integration
