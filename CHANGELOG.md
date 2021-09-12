@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.3...v1.0.4) (2021-09-12)
+
+### Chores
+
+- update package naming ([0d68991](https://github.com/meskill/steelseries-browser-cinema/commit/0d68991827c4f8a38597a013d75d77e19b4b9b9c))
+
 ## [1.0.3](https://github.com/meskill/steelseries-fullscreenhandler/compare/v1.0.2...v1.0.3) (2021-09-11)
 
 ### Continuous Integration
