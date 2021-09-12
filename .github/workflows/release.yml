@@ -18,11 +18,11 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-20.04
-    env:
-      GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
@@ -61,6 +61,8 @@ jobs:
           dest: release.zip
       - name: Release
         uses: ridedott/release-me-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
           dry-run: false
           release-assets: release.zip
