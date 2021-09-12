@@ -35,6 +35,8 @@ jobs:
       - name: Dry-Run Release
         id: release
         uses: ridedott/release-me-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
           dry-run: true
           node-module: true
