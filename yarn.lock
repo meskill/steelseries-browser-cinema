@@ -4300,9 +4300,9 @@ resolve@^1.9.0:
   languageName: node
   linkType: hard
 
-"steelseries-cinema@workspace:.":
+"steelseries-browser-cinema@workspace:.":
   version: 0.0.0-use.local
-  resolution: "steelseries-cinema@workspace:."
+  resolution: "steelseries-browser-cinema@workspace:."
   dependencies:
     "@types/chrome": ^0.0.154
     "@typescript-eslint/eslint-plugin": ^4.29.3
