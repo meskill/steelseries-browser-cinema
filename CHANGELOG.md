@@ -1,3 +1,11 @@
+## [1.0.5](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.4...v1.0.5) (2021-09-12)
+
+### Continuous Integration
+
+- fix dry-run release ([546f443](https://github.com/meskill/steelseries-browser-cinema/commit/546f44316c7faf60323a31a31d1e223ec55d37e5))
+- fix usage of PAT ([06a3f74](https://github.com/meskill/steelseries-browser-cinema/commit/06a3f74c486389f2eac28aac823a75d7a09be8ab))
+- use personal access token in order to work with protected branches ([5bd5272](https://github.com/meskill/steelseries-browser-cinema/commit/5bd5272da353006d77db1a7486d93c611fd3aa42))
+
 ## [1.0.4](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.3...v1.0.4) (2021-09-12)
 
 ### Chores

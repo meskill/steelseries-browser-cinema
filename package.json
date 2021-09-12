@@ -1,6 +1,6 @@
 {
 	"name": "steelseries-browser-cinema",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "Allows to subscribe to browser fullscreen event to control steelseries gears lighting",
 	"main": "index.js",
 	"repository": "git@github.com:meskill/steelseries-browser-cinema.git",
