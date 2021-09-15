@@ -1,3 +1,9 @@
+## [1.0.6](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.5...v1.0.6) (2021-09-15)
+
+### Continuous Integration
+
+- use github app token instead of PAT (#10) ([8878bb5](https://github.com/meskill/steelseries-browser-cinema/commit/8878bb5400703414cf670b1f357b71852faea851)), closes [#10](https://github.com/meskill/steelseries-browser-cinema/issues/10)
+
 ## [1.0.5](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.4...v1.0.5) (2021-09-12)
 
 ### Continuous Integration
