@@ -19,10 +19,16 @@ jobs:
   publish:
     runs-on: ubuntu-20.04
     steps:
+      - name: Generate Token
+        id: generate-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.TOKEN_APP_ID }}
+          private_key: ${{ secrets.TOKEN_APP_PRIVATE_KEY }}
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          persist-credentials: false
+          token: ${{ steps.generate-token.outputs.token }}
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
@@ -36,7 +42,7 @@ jobs:
         id: release
         uses: ridedott/release-me-action@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
         with:
           dry-run: true
           node-module: true
@@ -64,7 +70,7 @@ jobs:
       - name: Release
         uses: ridedott/release-me-action@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
         with:
           dry-run: false
           release-assets: release.zip
