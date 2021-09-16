@@ -1,7 +1,7 @@
 import { STEEL_SERIES_CONFIG_PATH } from './constants/steelseries';
 
-export const resolveSteelseriesAddress = () => {
-	return new Promise<string>((resolve, reject) => {
+export const resolveSteelseriesAddress = (): Promise<string> => {
+	return new Promise((resolve, reject) => {
 		const xhr = new XMLHttpRequest();
 
 		xhr.open('GET', STEEL_SERIES_CONFIG_PATH);
