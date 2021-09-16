@@ -8,7 +8,7 @@ export const getAddressWithStorage = async (): Promise<string | undefined> => {
 	});
 };
 
-export const writeAddressIntoStorage = async (address: string) => {
+export const writeAddressIntoStorage = async (address: string): Promise<void> => {
 	await chrome.storage.local.set({
 		[STEEL_SERIES_API_STORAGE_KEY]: address,
 	});
