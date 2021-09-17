@@ -1,3 +1,9 @@
+## [1.0.8](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.7...v1.0.8) (2021-09-17)
+
+### Code Refactoring
+
+- refactor steelseries api to point that it work only with localhost (#12) ([e863a4f](https://github.com/meskill/steelseries-browser-cinema/commit/e863a4f9805820f9dbf07c573e9658290a9657bd)), closes [#12](https://github.com/meskill/steelseries-browser-cinema/issues/12)
+
 ## [1.0.7](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.6...v1.0.7) (2021-09-17)
 
 ### Bug Fixes
