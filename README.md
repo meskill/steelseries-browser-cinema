@@ -36,7 +36,7 @@ Make sure `SteelSeries GG` is running and extension is enabled in browser
 
 ### No answer on my question
 
-Please create Issue on [GitHub](https://github.com) with detailed report
+Please create Issue on [GitHub](https://github.com/meskill/steelseries-browser-cinema/issues) with detailed report
 
 ## How does it work
 
