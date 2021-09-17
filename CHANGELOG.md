@@ -1,3 +1,9 @@
+## [1.0.7](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.6...v1.0.7) (2021-09-17)
+
+### Bug Fixes
+
+- remove unused "tabs" permission (#11) ([47e6824](https://github.com/meskill/steelseries-browser-cinema/commit/47e6824a15d691f5fb1f1b60afb0f09d229445be)), closes [#11](https://github.com/meskill/steelseries-browser-cinema/issues/11)
+
 ## [1.0.6](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.5...v1.0.6) (2021-09-15)
 
 ### Continuous Integration
