@@ -1,12 +1,11 @@
 {
 	"name": "SteelSeries Browser Cinema",
 	"short_name": "SteelSeries",
-	"version": "0.0.0-stub",
+	"version": "0.0.0",
 	"description": "Allows to subscribe to browser fullscreen event to control steelseries gears lighting",
 	"manifest_version": 3,
 	"permissions": [
 		"storage",
-		"tabs",
 		"scripting"
 	],
 	"host_permissions": [
