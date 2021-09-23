@@ -11,12 +11,14 @@ Having gaming devices with fancy RGB led feels great, but it might become annoyi
 ## Setup
 
 1. Make sure you have installed [Steelseries GG](https://steelseries.com/gg) and configured your device inside [Engine tab](https://steelseries.com/engine)
-2. Install `StellSeries Browser Cinema` extension
-3. After success install inside [Engine -> Apps Tab in SteelSeries GG](https://steelseries.com/engine/apps) should appear new game named `Browser Cinema`
-4. Go into `Browser Cinema` game
-5. Choose `Event in Game -> FULLSCREEN`
-6. Here you can setup your device reaction for browser fullscreen mode (I prefer to set it all to single black color that mean led will be turned off completely)
-7. Repeat device set up for every of your devices
+2. Install `StellSeries Browser Cinema` extension from [Chrome Store](https://chrome.google.com/webstore/detail/steelseries-browser-cinem/mndmnpnegjbnfakegcedmfccfiapdnhc/related?hl=ru&authuser=0) or from [github releases page](https://github.com/meskill/steelseries-browser-cinema/releases)
+3. Navigate to `chrome://extensions` and click "Details" on the newly installed extension.
+4. Scroll down and make sure the "Allow access to file URLs" is enabled.
+5. Inside [Engine -> Apps Tab in SteelSeries GG](https://steelseries.com/engine/apps) should appear new game named `Browser Cinema`
+6. Go into `Browser Cinema` game
+7. Choose `Event in Game -> FULLSCREEN`
+8. Here you can setup your device reaction for browser fullscreen mode (I prefer to set it all to single black color that mean led will be turned off completely)
+9. Repeat device set up for every of your devices
 
 ## Caveats
 
@@ -56,3 +58,7 @@ Please create Issue on [GitHub](https://github.com/meskill/steelseries-browser-c
 ### Icons
 
 Icons made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/)
+
+## Donations
+
+<a href="" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
