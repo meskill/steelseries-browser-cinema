@@ -11,7 +11,7 @@ Having gaming devices with fancy RGB led feels great, but it might become annoyi
 ## Setup
 
 1. Make sure you have installed [Steelseries GG](https://steelseries.com/gg) and configured your device inside [Engine tab](https://steelseries.com/engine)
-2. Install `StellSeries Browser Cinema` extension from [Chrome Store](https://chrome.google.com/webstore/detail/steelseries-browser-cinem/mndmnpnegjbnfakegcedmfccfiapdnhc/related?hl=ru&authuser=0) or from [github releases page](https://github.com/meskill/steelseries-browser-cinema/releases)
+2. Install `StellSeries Browser Cinema` extension from [Chrome Store](https://chrome.google.com/webstore/detail/steelseries-browser-cinem/mndmnpnegjbnfakegcedmfccfiapdnhc/) or from [github releases page](https://github.com/meskill/steelseries-browser-cinema/releases)
 3. Navigate to `chrome://extensions` and click "Details" on the newly installed extension.
 4. Scroll down and make sure the "Allow access to file URLs" is enabled.
 5. Inside [Engine -> Apps Tab in SteelSeries GG](https://steelseries.com/engine/apps) should appear new game named `Browser Cinema`
