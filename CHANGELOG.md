@@ -1,3 +1,22 @@
+# [1.1.0](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.8...v1.1.0) (2021-09-24)
+
+### Continuous Integration
+
+- fix dry-run release call ([bbcbe09](https://github.com/meskill/steelseries-browser-cinema/commit/bbcbe096db91a408e21a93735becb4c5917a3082))
+
+### Documentation
+
+- update instruction in readme (#14) ([c3bf985](https://github.com/meskill/steelseries-browser-cinema/commit/c3bf9850152a92a2eea0ff72e038cec6f09798ac)), closes [#14](https://github.com/meskill/steelseries-browser-cinema/issues/14)
+- update link to issues page ([9e21b4e](https://github.com/meskill/steelseries-browser-cinema/commit/9e21b4ee2e7754a39a81f0060d6858adb3603a76))
+
+### Features
+
+- open instruction tab on install (#15) ([296649d](https://github.com/meskill/steelseries-browser-cinema/commit/296649d4522b67bd90ef5e85c404372f8f09ab91)), closes [#15](https://github.com/meskill/steelseries-browser-cinema/issues/15)
+
+### Tests
+
+- add jest (#16) ([6b6c27b](https://github.com/meskill/steelseries-browser-cinema/commit/6b6c27b8db97a16042041334241a65edbe7f89b7)), closes [#16](https://github.com/meskill/steelseries-browser-cinema/issues/16)
+
 ## [1.0.8](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.7...v1.0.8) (2021-09-17)
 
 ### Code Refactoring
