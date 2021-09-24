@@ -1,45 +1,80 @@
 import { SteelSeriesApi } from './api';
-import { DEVELOPER } from './constants/info';
-import { DISPLAY_GAME_NAME, EVENT_FULLSCREEN_NAME, GAME_NAME, STEEL_SERIES_CONFIG_PATH } from './constants/steelseries';
-import { DEINITILIZE_TIMER } from './constants/timeouts';
+import { waitTabLoaded } from './chrome/tabs';
+import { GITHUB_URL } from './constants/info';
+import { DISPLAY_GAME_NAME, STEEL_SERIES_CONFIG_PATH } from './constants/steelseries';
+import { registerGame } from './registerGame';
 import { writeAddressIntoStorage } from './storage';
-import { CoreProps } from './types';
+import { CoreProps, ExtensionMessageShowAlert } from './types';
+import { checkFileSchemeAccess } from './utils/checkFileSchemeAccess';
 
-chrome.runtime.onInstalled.addListener(async () => {
+const openInstructionsTab = async () => {
+	const instructionTab = await chrome.tabs.create({
+		url: `${GITHUB_URL}#setup`,
+	});
+
+	if (instructionTab.id) {
+		await waitTabLoaded(instructionTab);
+		await new Promise<void>((resolve) => {
+			if (instructionTab.id) {
+				chrome.tabs.sendMessage<ExtensionMessageShowAlert['request']>(
+					instructionTab.id,
+					{
+						type: 'showAlert',
+						message: `In order to work SteelSeries ${DISPLAY_GAME_NAME} Extension needs "Allow access to file URLs" permission.
+Please enable that permission on a new tab that will open after you click "OK" on this message`,
+					},
+					resolve
+				);
+			}
+		});
+	}
+
+	const tab = await chrome.tabs.create({
+		url: `chrome://extensions/?id=${chrome.runtime.id}`,
+	});
+
+	if (!tab.id) {
+		throw new Error('Cannot open Extensions Settings Tab');
+	}
+};
+
+const registerGameWithTab = async () => {
 	const tab = await chrome.tabs.create({
 		url: STEEL_SERIES_CONFIG_PATH,
 		active: false,
 	});
 
-	const handler: Parameters<chrome.tabs.TabUpdatedEvent['addListener']>[0] = async (tabId, info) => {
-		if (tabId === tab.id && info.status === 'complete') {
-			const [{ result }] = await chrome.scripting.executeScript({
-				target: { tabId },
-				files: ['readAddress.js'],
-			});
-			const { address } = result as CoreProps;
+	if (!tab.id) {
+		throw new Error('Cannot get STEEL_SERIES_CONFIG_PATH file');
+	}
 
-			await writeAddressIntoStorage(address);
+	await waitTabLoaded(tab);
 
-			const api = new SteelSeriesApi(address);
+	const [{ result }] = await chrome.scripting.executeScript({
+		target: { tabId: tab.id },
+		func: () => {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			return JSON.parse(document.body?.firstChild?.innerText);
+		},
+	});
+	const { address } = result as CoreProps;
 
-			await api.send('game_metadata', {
-				game: GAME_NAME,
-				game_display_name: DISPLAY_GAME_NAME,
-				developer: DEVELOPER,
-				deinitialize_timer_length_ms: DEINITILIZE_TIMER,
-			});
+	await writeAddressIntoStorage(address);
 
-			await api.send('register_game_event', {
-				game: GAME_NAME,
-				icon_id: 16,
-				event: EVENT_FULLSCREEN_NAME,
-			});
+	const api = new SteelSeriesApi(address);
 
-			chrome.tabs.onUpdated.removeListener(handler);
-			chrome.tabs.remove(tabId);
-		}
-	};
+	await registerGame(api);
 
-	chrome.tabs.onUpdated.addListener(handler);
+	chrome.tabs.remove(tab.id);
+};
+
+chrome.runtime.onInstalled.addListener(async () => {
+	const hasFileSchemaAccess = await checkFileSchemeAccess();
+
+	if (hasFileSchemaAccess) {
+		await registerGameWithTab();
+	} else {
+		await openInstructionsTab();
+	}
 });

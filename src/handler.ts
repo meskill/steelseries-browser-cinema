@@ -3,6 +3,7 @@ import { GAME_NAME } from './constants/steelseries';
 import { FULLSCREEN_BACKGROUND_FETCH_INTERNAL } from './constants/timeouts';
 import { createFullScreenEvent } from './events';
 import { getAddressWithStorage, writeAddressIntoStorage } from './storage';
+import { ExtensionMessageShowAlert } from './types';
 
 const getAddressWithIframe = () => {
 	return new Promise<string>((resolve) => {
@@ -75,5 +76,12 @@ document.addEventListener('fullscreenchange', async () => {
 	} else {
 		clearInterval(interval);
 		sendEvent(() => api.send('stop_game', { game: GAME_NAME }));
+	}
+});
+
+chrome.runtime.onMessage.addListener((request: ExtensionMessageShowAlert['request']) => {
+	if (request.type === 'showAlert') {
+		alert(request.message);
+		return true;
 	}
 });
