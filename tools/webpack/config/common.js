@@ -17,12 +17,7 @@ const config = {
 	},
 	plugins: [
 		new CopyPlugin({
-			patterns: [
-				{ from: 'src/manifest.json' },
-				{ from: 'src/iframe.html' },
-				{ from: 'src/readAddress.js' },
-				{ from: 'assets', to: 'assets' },
-			],
+			patterns: [{ from: 'src/manifest.json' }, { from: 'src/iframe.html' }, { from: 'assets', to: 'assets' }],
 		}),
 	],
 	module: {
