@@ -20,6 +20,11 @@ Having gaming devices with fancy RGB led feels great, but it might become annoyi
 8. Here you can setup your device reaction for browser fullscreen mode (I prefer to set it all to single black color that mean led will be turned off completely)
 9. Repeat device set up for every of your devices
 
+### Screenshots
+
+![image](https://user-images.githubusercontent.com/8974488/134727379-48a4d5de-a4cc-4bba-8f71-6dbb3d70e7cd.png)
+![image](https://user-images.githubusercontent.com/8974488/134727399-6e319086-0ced-4ae1-b170-538840654da4.png)
+
 ## Caveats
 
 - Currently supports only `Windows`
