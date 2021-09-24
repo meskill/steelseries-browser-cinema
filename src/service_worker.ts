@@ -20,8 +20,8 @@ const openInstructionsTab = async () => {
 					instructionTab.id,
 					{
 						type: 'showAlert',
-						message: `In order to work SteelSeries ${DISPLAY_GAME_NAME} Extension needs "Allow access to file URLs" permission.
-Please enable that permission on a new tab that will open after you click "OK" on this message`,
+						message: `In order to work, SteelSeries ${DISPLAY_GAME_NAME} Extension needs permission "Allow access to file URLs".
+Please enable this permission on a new tab that will open after you click "OK" on this message`,
 					},
 					resolve
 				);
