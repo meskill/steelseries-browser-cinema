@@ -58,6 +58,10 @@ Please create Issue on [GitHub](https://github.com/meskill/steelseries-browser-c
 2. On installation extension register new game `Browser Cinema` in `SteelSeries Plugin Server`
 3. When browser changes its fullscreen mode the extensions send event `Fullscreen` to `SteelSeries Plugin Server`
 
+## Related Projects
+
+- [Steelseries Youtube Addon](https://github.com/AeTher97/Steelseries_Youtube_Addon)
+
 ## Credits
 
 ### Icons
