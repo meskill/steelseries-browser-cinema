@@ -3,4 +3,4 @@ printWidth: 120
 overrides:
   - files: "*.md"
     options:
-      parser: "markdown"
+      parser: markdown
