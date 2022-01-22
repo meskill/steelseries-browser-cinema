@@ -72,6 +72,10 @@ Icons made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https:/
 
 <!-- <a href="https://www.buymeacoffee.com/meskill" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a> -->
 
+### YooMoney
+
+<a href="https://yoomoney.ru/to/4100117368774389" target="_blank"><img src="https://play-lh.googleusercontent.com/fMbbh6JE6DJ_e9lusHysPINeYdNCuRTYZ2qAHtg7FDZG3KafJOaj7LVdDBJBUCb5inA=s180-rw" alt="YooMoney" style="height: 50px !important;width: 50px !important;"/></a>
+
 ### Webmoney
 
 [Webmoney Site](https://www.web.money/eng/) - you have to be registered in order to send money.
