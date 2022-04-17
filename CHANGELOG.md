@@ -1,3 +1,29 @@
+## [1.1.1](https://github.com/meskill/steelseries-browser-cinema/compare/v1.1.0...v1.1.1) (2022-04-17)
+
+### Chores
+
+- upgrade yarn and packages ([9605164](https://github.com/meskill/steelseries-browser-cinema/commit/9605164912ee49e7ce7ffb36b1fa3b9b807c7535))
+- use @meskill/sharec-config as tools setup (#17) ([0ef7ba4](https://github.com/meskill/steelseries-browser-cinema/commit/0ef7ba4f3acd6a72b65f0b66764a3d797120d538)), closes [#17](https://github.com/meskill/steelseries-browser-cinema/issues/17)
+
+### Code Refactoring
+
+- load file config with fetch ([4c2ff79](https://github.com/meskill/steelseries-browser-cinema/commit/4c2ff79e7812f503573eabcaebc029f637f8e912))
+
+### Continuous Integration
+
+- add test run ([fcbcb7d](https://github.com/meskill/steelseries-browser-cinema/commit/fcbcb7d76ac6ef653cc763382bbbfd97ce62e1f0))
+
+### Documentation
+
+- add related projects list ([088006c](https://github.com/meskill/steelseries-browser-cinema/commit/088006c2c5482c75a5a86905654fbca5cea2885c))
+- fix donation link ([4abdc04](https://github.com/meskill/steelseries-browser-cinema/commit/4abdc04c44ba26be91c7364ef74b1c705ac6e72d))
+- update donation links ([60738e7](https://github.com/meskill/steelseries-browser-cinema/commit/60738e75d79c0aecf4aa975b077c50c0ed7a136f))
+
+### Other
+
+- Add link to the YooMoney donation ([791767d](https://github.com/meskill/steelseries-browser-cinema/commit/791767d8cea568e30e3d5b53178085a70506193e))
+- Create FUNDING.yml ([31004c2](https://github.com/meskill/steelseries-browser-cinema/commit/31004c2a9838e6eb6fc295eb8507d10795b65225))
+
 # [1.1.0](https://github.com/meskill/steelseries-browser-cinema/compare/v1.0.8...v1.1.0) (2021-09-24)
 
 ### Continuous Integration
