@@ -1,25 +1,9 @@
 import { STEEL_SERIES_CONFIG_PATH } from './constants/steelseries';
+import { CoreProps } from './types';
 
-export const resolveSteelseriesAddress = (): Promise<string> => {
-	return new Promise((resolve, reject) => {
-		const xhr = new XMLHttpRequest();
+export const resolveSteelseriesAddress = async (): Promise<string> => {
+	const response = await fetch(STEEL_SERIES_CONFIG_PATH);
+	const config: CoreProps = await response.json();
 
-		xhr.open('GET', STEEL_SERIES_CONFIG_PATH);
-
-		xhr.onload = () => {
-			try {
-				const config = JSON.parse(xhr.response);
-
-				resolve(config.address);
-			} catch (err) {
-				reject(err);
-			}
-		};
-
-		xhr.onerror = () => {
-			reject(new Error('Failed to fetch config'));
-		};
-
-		xhr.send();
-	});
+	return config.address;
 };
