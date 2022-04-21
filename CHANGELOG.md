@@ -1,3 +1,9 @@
+## [1.1.2](https://github.com/meskill/steelseries-browser-cinema/compare/v1.1.1...v1.1.2) (2022-04-21)
+
+### Bug Fixes
+
+- improve fullscreen detection ([28f6ba4](https://github.com/meskill/steelseries-browser-cinema/commit/28f6ba4362c961c7cd555918cb9be6376fa2b3e5))
+
 ## [1.1.1](https://github.com/meskill/steelseries-browser-cinema/compare/v1.1.0...v1.1.1) (2022-04-17)
 
 ### Chores
