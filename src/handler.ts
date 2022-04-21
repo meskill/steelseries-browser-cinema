@@ -37,7 +37,7 @@ const resolveAddress = async () => {
 	return getAddressWithIframe();
 };
 
-let interval: ReturnType<typeof setTimeout>;
+let interval: ReturnType<typeof setTimeout> | undefined;
 let api: SteelSeriesApi;
 
 const reloadApi = async () => {
@@ -66,16 +66,20 @@ const sendFullscreen = () => {
 	return sendEvent(() => api.send('game_event', createFullScreenEvent()));
 };
 
-document.addEventListener('fullscreenchange', async () => {
-	if (document.fullscreenElement) {
+window.addEventListener('resize', async () => {
+	const isFullscreen = !!document.fullscreenElement;
+	const isInProgress = typeof interval !== 'undefined';
+
+	if (isFullscreen && !isInProgress) {
 		sendFullscreen();
 
 		interval = setInterval(() => {
 			sendFullscreen();
 		}, FULLSCREEN_BACKGROUND_FETCH_INTERNAL);
-	} else {
+	} else if (!isFullscreen && isInProgress) {
 		clearInterval(interval);
 		sendEvent(() => api.send('stop_game', { game: GAME_NAME }));
+		interval = undefined;
 	}
 });
 
