@@ -66,6 +66,8 @@ Please create Issue on [GitHub](https://github.com/meskill/steelseries-browser-c
 
 ### Icons
 
+test
+
 Icons made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/)
 
 ## Donations
