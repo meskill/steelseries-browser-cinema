@@ -60,6 +60,7 @@ Please create Issue on [GitHub](https://github.com/meskill/steelseries-browser-c
 
 ## Related Projects
 
+- [Mystic Light Browser Cinema](https://github.com/meskill/mystic-light-browser-cinema) - similar extension but only for Mystic Light devices
 - [Steelseries Youtube Addon](https://github.com/AeTher97/Steelseries_Youtube_Addon)
 
 ## Credits
